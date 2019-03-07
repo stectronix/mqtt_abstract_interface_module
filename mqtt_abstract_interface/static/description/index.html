@@ -1,0 +1,79 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">MQTT Abstract interface</h2>
+        <h3 class="oe_slogan">Add MQTT functionalities to your modules</h3>
+        <h4 class="oe_slogan" style="font-size: 23px;">Tectronix Spa -
+            www.tectronix.cl</h4>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="text-justify" style="max-width: 84%; margin: 16px 8%;">
+            <h3 class="oe_slogan">Overview</h3>
+            <p class="oe_mt32 text-justify">This is a technical base module
+                that enable Mqtt communication between Odoo database,
+                your modules and IoT devices through a Broker server.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="text-justify" style="max-width: 84%; margin: 16px 8%;">
+            <h3 class="oe_slogan">Requirements</h3>
+            <p class="oe_mt32 text-justify">
+                There is two requirements for the correct operation of this module:
+                <ul>
+                    <li>
+                        <p>
+                            paho-mqtt library: <br>
+                            <span style='padding-left:5em'>
+                                A python's library developed by Eclipse, for Mqtt Protocol. It can be installed via the
+                                Pip package manager
+                                (Official site: <a>https://pypi.org/project/paho-mqtt/</a>)
+                            </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Broker server: <br>
+                            <span style='padding-left:5em'>
+                                The broker is encharged of distribute the messages between the devices and database.
+                                Mosquitto (An open source MQTT broker) is recommended because it is simple,
+                                effective and efficient, also developed by eclipse.
+                                Can be easily deploy in no more than three or four lines in a console.
+                                (<a href='https://mosquitto.org/'>Official site</a>)
+                            </span>
+                        </p>
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">How install it?</h3>
+        <div class="oe_span6">
+            <p class="oe_mt32 text-justify">
+                It can be easily deployed in four steps:
+                <ol>
+                    <li>Inherit the interface into one of your module's models</li>
+                    <li>Implement the required methods</li>
+                    <li>Mount your Broker server</li>
+                    <li>Create an automated action to start mqtt</li>
+                </ol>
+            </p>
+            <p class="oe_mt32 text-justify">
+                    The automated action must be "action_start_mqtt (topic)" to start the MQTT Client
+                    and subscribe to the topic parameter. This automated action must be executed every minute, 
+                    for ensure the correct functioning of the module. 
+            </p>
+        </div>
+    </div>
+</section>
+

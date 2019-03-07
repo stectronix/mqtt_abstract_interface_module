@@ -20,12 +20,13 @@ class MqttAbstractInterface(models.AbstractModel):
     #method to start mqtt service and connect to a broker server
     #this method require a automatic acction in the inherited model
     @api.multi
-    def action_start_mqtt(self):
+    def action_start_mqtt(self, topic='#'):
         if self.conect == False:
             type(self).conect = True
             self.controller.client.on_message = self.on_message
             self.controller.push_task('connect', data=self.data)
             self.controller.push_task('start')
+            self.subscribe(topic)
         elif self.conect:
             _logger.info("INFO: already connect to a mqtt broker!")
 
@@ -43,6 +44,11 @@ class MqttAbstractInterface(models.AbstractModel):
     def subscribe(self, topic='#'):
         time.sleep(2)
         self.controller.push_task('subscribe', topic)
+
+    def on_disconnect(self, client, userdata, rc):
+        type(self).conect = False
+        _logger.info("MQTT Client: Unexpected disconnection.")
+
 
 # Methods that require implementation in the class that inherits
 
